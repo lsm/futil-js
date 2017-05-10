@@ -193,3 +193,14 @@ Maps a function over a recursive iterable. Works by default for nested Arrays, n
 nested Arrays and Plain Objects. Also works for any other iterable data type as long as
 two other values are sent: a mapping function, and a type checker (See the
 unit tests for deepMap).
+
+## Async functions
+
+## asyncMap
+Like lodash/fp map, but accepts promises. Promises run in parallel.
+
+## asyncReduce
+Like lodash/fp reduce, but accepts promises. Promises run in sequence.
+
+## asyncIterator
+Reduces over a promise based iterator.
