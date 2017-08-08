@@ -17,7 +17,7 @@ export const matchAllWords = _.flow(
   _.overEvery
 )
 
-export const postings = (regex, str) => {
+export const postings = _.curry((regex, str) => {
   var match = regex.exec(str)
   let result = []
 
@@ -26,13 +26,13 @@ export const postings = (regex, str) => {
     match = regex.exec(str)
   }
   return result
-}
+})
 
-export const postingsForWords = (string, str) => _.reduce(
+export const postingsForWords = _.curry((string, str) => _.reduce(
   (result, word) => push(postings(RegExp(word, 'gi'), str), result), []
-)(_.words(string))
+)(_.words(string)))
 
-export const highlightFromPostings = (start, end, postings, str) => {
+export const highlightFromPostings = _.curry((start, end, postings, str) => {
   let offset = 0
   _.each(posting => {
     str = insertAtIndex(posting[0] + offset, start, str)
@@ -41,7 +41,7 @@ export const highlightFromPostings = (start, end, postings, str) => {
     offset += end.length
   }, mergeRanges(postings))
   return str
-}
+})
 
-export const highlight = (start, end, pattern, input) =>
-  highlightFromPostings(start, end, _.flatten(postingsForWords(pattern, input)), input)
+export const highlight = _.curry((start, end, pattern, input) =>
+  highlightFromPostings(start, end, _.flatten(postingsForWords(pattern, input)), input))
