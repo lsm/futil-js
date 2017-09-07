@@ -38,7 +38,7 @@
     "chai-as-promised": "^7.0.0",
     "chokidar": "^1.6.1",
     "chokidar-cli": "^1.2.0",
-    "codacy-coverage": "^2.0.1",
+    "codacy-coverage": "^2.0.3",
     "coveralls": "^2.11.16",
     "duti": "latest",
     "eslint": "4.1.0",
